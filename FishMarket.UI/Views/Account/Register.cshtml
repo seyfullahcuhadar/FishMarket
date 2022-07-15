@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Register";
+}
+
+@model FishMarket.Application.Accounts.Register.RegisterCommand
+
+@using (Html.BeginForm("Register", "Account"))
+
+{
+
+
+<div>
+
+    <h2>User Registration</h2>
+
+    <div class="row">
+
+        <div class="form-group col-6">
+
+            <lable for="loginid">Username</lable>
+
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Enter username" })
+            <span asp-validation-for="Username" class="text-danger"></span>
+
+        </div>
+
+    </div>
+    <br />
+
+    <div class="row">
+
+        <div class="form-group col-6">
+
+            <lable for="loginid">Password</lable>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter password" })
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="form-group col-6">
+            <lable for="loginid">Password</lable>
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Enter confirm password" })
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+
+        <div class="form-group col-12">
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="form-group col-12">
+            <a href="/Home/Index/">Click to Login</a>
+        </div>
+    </div>
+
+</div>
+
+}
