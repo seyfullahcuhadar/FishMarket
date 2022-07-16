@@ -18,11 +18,23 @@
     <None Remove="FluentValidation.DependencyInjectionExtensions" />
     <None Remove="FluentValidation.AspNetCore" />
     <None Remove="Accounts\Register\" />
+    <None Remove="Emails\" />
+    <None Remove="Accounts\ConfirmEmail\" />
+    <None Remove="Configuration\Errors\" />
+    <None Remove="Accounts\Logout\" />
+    <None Remove="Fishes\" />
+    <None Remove="Fishes\CreateFish\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FishMarket.Domain\FishMarket.Domain.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Accounts\Register\" />
+    <Folder Include="Emails\" />
+    <Folder Include="Accounts\ConfirmEmail\" />
+    <Folder Include="Configuration\Exceptions\" />
+    <Folder Include="Accounts\Logout\" />
+    <Folder Include="Fishes\" />
+    <Folder Include="Fishes\CreateFish\" />
   </ItemGroup>
 </Project>

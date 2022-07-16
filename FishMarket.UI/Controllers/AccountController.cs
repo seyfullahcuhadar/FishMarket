@@ -1,6 +1,7 @@
-﻿using FishMarket.Application.Accounts.Login;
+﻿using FishMarket.Application.Accounts.ConfirmEmail;
+using FishMarket.Application.Accounts.Login;
+using FishMarket.Application.Accounts.Logout;
 using FishMarket.Application.Accounts.Register;
-using FishMarket.UI.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,9 +26,18 @@ namespace FishMarket.UI.Controllers
         [HttpPost]
         [Route("Login")]
         [ValidateAntiForgeryToken]
-        public ActionResult LoginOnPost(LoginQuery loginQuery)
+        public async Task<ActionResult> LoginOnPost(LoginCommand model)
         {
-            return View(loginQuery);
+            var result = await mediator.Send(model);
+            if (result)
+                return RedirectToAction("Index", "Home");
+            else
+            {
+                ViewBag.Error = "Invalid username or password";
+                return View("Login",model);
+
+            }
+
         }
 
         [HttpGet]
@@ -37,20 +47,47 @@ namespace FishMarket.UI.Controllers
             return View();
         }
 
-        // POST: Account/SignUp
+        // POST: Account/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Route("Register")]
 
         public async Task<ActionResult> RegisterOnPostAsync(RegisterCommand model)
         {
+            var requestUrl = $"{Request.Scheme}://{Request.Host}";
+            model.CurrentUrl = requestUrl;
             if (!ModelState.IsValid)
             {
                 return View("Register",model);
             }
             await mediator.Send(model);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("ConfirmationMailSent", "Account");
         }
 
+        [HttpGet("ConfirmEmailAddress")]
+        public async Task<ActionResult> ConfirmEmailAddressAsync([FromQuery] string confirmationToken,[FromQuery] string emailAddress)
+        {
+            var confirmCommand = new ConfirmEmailCommand { EmailAddress = emailAddress, Token = confirmationToken };
+            await mediator.Send(confirmCommand);
+            return RedirectToAction("ConfirmSuccessful", "Account", emailAddress);
+        }
+
+        [HttpGet("ConfirmationSuccessful")]
+        public ActionResult ConfirmSuccessful(string emailAddress)
+        {
+            return View(emailAddress);
+        }
+
+        public ActionResult ConfirmationMailSent()
+        {
+            return View();
+        }
+
+        [HttpGet("Logout")]
+        public async Task<ActionResult> LogoutAsync(string emailAddress)
+        {
+            await mediator.Send(new LogoutCommand());
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -7,6 +7,11 @@
     <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Identity\" />
+    <None Remove="Fishes\" />
+    <None Remove="Fishes\BusinessRules\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Fishes\" />
+    <Folder Include="Fishes\Rules\" />
   </ItemGroup>
 </Project>

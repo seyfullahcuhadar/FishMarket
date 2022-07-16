@@ -5,7 +5,7 @@ namespace FishMarket.Infrastructure.Identity
 {
     public class EmailNotFoundException : InfrastructureException
     {
-        public EmailNotFoundException() : base($"Email Not Found")
+        public EmailNotFoundException(string email) : base($"{email} Email Not Found")
         {
         }
 

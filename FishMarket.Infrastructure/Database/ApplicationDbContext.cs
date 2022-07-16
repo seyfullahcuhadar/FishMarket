@@ -1,5 +1,5 @@
-﻿using FishMarket.Domain.SeedWork;
-using FishMarket.Domain.Transactions;
+﻿using FishMarket.Domain.Fishes;
+using FishMarket.Domain.SeedWork;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
@@ -9,7 +9,7 @@ namespace FishMarket.Infrastructure.Database
 {
     public class ApplicationDbContext:DbContext
     {
-        public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Fish> Fishes { get; set; }
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
         }
@@ -20,17 +20,17 @@ namespace FishMarket.Infrastructure.Database
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            foreach (var entityEntry in ChangeTracker.Entries()) // Iterate all made changes
+            foreach (var entityEntry in ChangeTracker.Entries())
             {
                 if (entityEntry.Entity is Entity entity)
                 {
-                    if (entityEntry.State == EntityState.Added) // If you want to update TenantId when Order is added
+                    if (entityEntry.State == EntityState.Added)
                     {
                         entity.ModifiedAt = DateTime.Now;
                         entity.CreatedAt = DateTime.Now;
 
                     }
-                    else if (entityEntry.State == EntityState.Modified) // If you want to update TenantId when Order is modified
+                    else if (entityEntry.State == EntityState.Modified) 
                     {
                         entity.ModifiedAt = DateTime.Now;
                     }

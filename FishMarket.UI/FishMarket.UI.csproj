@@ -18,6 +18,9 @@
     <None Remove="Serilog.Sinks.Seq" />
     <None Remove="Views\Account\" />
     <None Remove="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" />
+    <None Remove="Middlewares\" />
+    <None Remove="Attributes\" />
+    <None Remove="Views\Fish\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -33,7 +36,7 @@
 </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.6" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Autofac.Extras.CommonServiceLocator" Version="6.0.1" />
@@ -44,6 +47,9 @@
 
   <ItemGroup>
     <Folder Include="Views\Account\" />
+    <Folder Include="Middlewares\" />
+    <Folder Include="Attributes\" />
+    <Folder Include="Views\Fish\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FishMarket.Infrastructure\FishMarket.Infrastructure.csproj">

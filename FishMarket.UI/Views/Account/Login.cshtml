@@ -1,4 +1,65 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Login";
 }
 
+@model FishMarket.Application.Accounts.Login.LoginCommand
+
+@using (Html.BeginForm("Login", "Account"))
+
+{
+
+
+<div>
+
+    <h2>Login</h2>
+    <p class="text-danger">@ViewBag.Error</p>
+    <br />
+    <div class="row">
+        <div class="form-group col-6">
+
+            <lable for="loginid">Username</lable>
+
+            @Html.TextBoxFor(m => m.Username, new { @class = "form-control", @placeholder = "Enter username" })
+            <span asp-validation-for="Username" class="text-danger"></span>
+
+        </div>
+
+    </div>
+    <br />
+
+    <div class="row">
+
+        <div class="form-group col-6">
+
+            <lable for="loginid">Password</lable>
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Enter password" })
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-6 form-group">
+            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input"})
+            <label class="form-check-label">Remember Me</label>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+
+        <div class="form-group col-12">
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="form-group col-12">
+            <a asp-controller="Account" asp-action="Register">Click to Register</a>
+        </div>
+    </div>
+</div>
+
+}
