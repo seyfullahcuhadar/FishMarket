@@ -22,8 +22,10 @@ namespace FishMarket.Application.Fishes.CreateFish
         }
         public async Task<Unit> Handle(CreateFishCommand request, CancellationToken cancellationToken)
         {
+
             var fish = Fish.Create(request.Name,request.Price,request.ImageBytes,fishImageUtility);
             await fishRepository.CreateAsync(fish);
+            await unitOfWork.CommitAsync();
             return Unit.Value;
         }
     }

@@ -20,8 +20,8 @@ namespace FishMarket.Domain.Fishes
         private Image(byte[] imageBytes,IFishImageUtility fishImageUtility)
         {
             this.Bytes = imageBytes;
-            this.Path = fishImageUtility.CopyImageBytesToFile(imageBytes);
             this.ImageFormat = GetImageFormat(imageBytes);
+            this.Path = fishImageUtility.CopyImageBytesToFile(imageBytes,ImageFormat);
         }
         private Image(){}
         private static ImageFormat GetImageFormat(byte[] Bytes)

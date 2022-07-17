@@ -21,6 +21,7 @@
     <None Remove="Middlewares\" />
     <None Remove="Attributes\" />
     <None Remove="Views\Fish\" />
+    <None Remove="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
@@ -40,7 +41,7 @@
     <PackageReference Include="MediatR" Version="10.0.1" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
     <PackageReference Include="Autofac.Extras.CommonServiceLocator" Version="6.0.1" />
-    <PackageReference Include="Serilog.AspNetCore" Version="5.0.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.0.0" />
     <PackageReference Include="Serilog.Sinks.Seq" Version="5.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.7" />
   </ItemGroup>
@@ -50,6 +51,7 @@
     <Folder Include="Middlewares\" />
     <Folder Include="Attributes\" />
     <Folder Include="Views\Fish\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FishMarket.Infrastructure\FishMarket.Infrastructure.csproj">

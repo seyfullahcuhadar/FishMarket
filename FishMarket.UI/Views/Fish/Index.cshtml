@@ -2,29 +2,36 @@
     ViewData["Title"] = "Fishes";
 }
 
+@model List<FishMarket.Application.Fishes.GetFishes.FishDTO>
+
+
+<a  class="btn btn-success" asp-action="Create" asp-controller="Fish">Create Fish</a>
+
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-        </tr>
-        <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-        </tr>
-        <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+                <td><img width="150" src="@item.ImagePath"/></td>
+                <td>
+                    <a class="btn btn-primary" href="Fish/@item.Id">Edit</a>
+                    <button class="btn btn-danger">Delete</button>
+
+                </td>
+            </tr>
+
+
+        }
+
     </tbody>
 </table>

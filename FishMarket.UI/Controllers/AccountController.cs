@@ -84,7 +84,7 @@ namespace FishMarket.UI.Controllers
         }
 
         [HttpGet("Logout")]
-        public async Task<ActionResult> LogoutAsync(string emailAddress)
+        public async Task<ActionResult> LogoutAsync()
         {
             await mediator.Send(new LogoutCommand());
             return RedirectToAction("Index", "Home");

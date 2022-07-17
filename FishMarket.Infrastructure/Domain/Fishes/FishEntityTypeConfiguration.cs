@@ -15,6 +15,8 @@ namespace FishMarket.Infrastructure.Domain.Fishes
             builder.Ignore(p => p.Image);
             builder.Property(f => f.ImagePath).HasColumnName("imagePath");
             builder.Property(f => f.Name).HasColumnName("name").HasMaxLength(200);
+            builder.Property(f => f.Price).HasColumnName("price").HasMaxLength(200);
+
         }
     }
 }
