@@ -27,6 +27,7 @@
     <None Remove="Fishes\GetFishes\" />
     <None Remove="Fishes\GetFish\GetFish\" />
     <None Remove="Fishes\UpdateFishDTO\" />
+    <None Remove="Fishes\DeleteFishCommand\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FishMarket.Domain\FishMarket.Domain.csproj" />
@@ -41,5 +42,6 @@
     <Folder Include="Fishes\CreateFish\" />
     <Folder Include="Fishes\GetFishes\" />
     <Folder Include="Fishes\UpdateFish\" />
+    <Folder Include="Fishes\DeleteFish\" />
   </ItemGroup>
 </Project>

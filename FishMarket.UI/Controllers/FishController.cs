@@ -1,5 +1,6 @@
 ﻿using System;
 using FishMarket.Application.Fishes.CreateFish;
+using FishMarket.Application.Fishes.DeleteFish;
 using FishMarket.Application.Fishes.GetFish;
 using FishMarket.Application.Fishes.GetFishes;
 using FishMarket.Application.Fishes.UpdateFish;
@@ -63,7 +64,24 @@ namespace FishMarket.UI.Controllers
             return RedirectToAction("Index", "Fish");
         }
 
+        [HttpGet("Delete/{fishId}")]
+        public async Task<ActionResult> Delete(Guid fishId)
+        {
+           
+            var fish = await mediator.Send(new GetFishQuery(fishId));
+            return View(fish);
+        }
 
+
+
+
+        [HttpPost("Delete/{fishId}")]
+        public async Task<ActionResult> DeleteOnPost(Guid fishId)
+        {
+            var deleteFishCommand = new DeleteFishCommand(fishId);
+            await mediator.Send(deleteFishCommand);
+            return RedirectToAction("Index", "Fish");
+        }
     }
 }
 
