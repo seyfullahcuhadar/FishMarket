@@ -34,6 +34,7 @@ namespace FishMarket.Domain.Fishes
 
         public void Update(string name, double price)
         {
+            CheckRule(new FishPriceMustBeGreaterThanZero(name, price));
             this.Name = name;
             this.Price = price;
         }
