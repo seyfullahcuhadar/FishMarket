@@ -19,7 +19,6 @@ builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 builder.Services.AddInfrastructure(connectionString,builder.Configuration);
 builder.Services.AddApplication();
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -41,17 +40,12 @@ app.Use(async (context, next) =>
 
     await next();
 });
-app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthentication();
 app.UseAuthorization();
-
+await app.Services.ApplyMigrationsAsync();
 app.UseMiddleware<GlobalErrorHandlerMiddleware>();
-
-
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

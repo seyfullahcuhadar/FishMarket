@@ -7,9 +7,9 @@ namespace FishMarket.Application.Fishes.UpdateFish
     {
         public UpdateFishCommandValidator()
         {
-            RuleFor(x => x.Name).NotEmpty();
+            RuleFor(x => x.Name).NotNull().NotEmpty();
             RuleFor(x => x.Id).NotEmpty();
-            RuleFor(x => x.Price).NotEmpty().GreaterThan(0);
+            RuleFor(x => x.Price).NotNull().NotEmpty().GreaterThan(0);
 
         }
     }

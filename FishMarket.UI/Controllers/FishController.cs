@@ -50,16 +50,16 @@ namespace FishMarket.UI.Controllers
         {
             var query = new GetFishQuery(fishId);
             var fish = await mediator.Send(query);
-            return View("Update", fish);
+            var updateFishCommand = new UpdateFishCommand(fish.Id, fish.Name, fish.Price,fish.ImagePath);
+            return View("Update", updateFishCommand);
         }
 
         [HttpPost("Update")]
-        public async Task<ActionResult> Update(FishMarket.Application.Fishes.GetFish.FishDTO fishDTO)
+        public async Task<ActionResult> Update(UpdateFishCommand updateFishCommand)
         {
             if (!ModelState.IsValid)
-                return View("Update", fishDTO);
+                return View("Update", updateFishCommand);
 
-            var updateFishCommand = new UpdateFishCommand(fishDTO.Id, fishDTO.Name, fishDTO.Price);
             await mediator.Send(updateFishCommand);
             return RedirectToAction("Index", "Fish");
         }

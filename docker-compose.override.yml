@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  fishmarket.ui:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - ConnectionStrings__DefaultConnection=Server=sqldb;Database=FishMarketDB;User Id=sa;Password=someThingComplicated1234;
+
+    ports:
+      - "80:80"
+    volumes:
+      - ~/.aspnet/https:/root/.aspnet/https:ro
+      - ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+  sqldb:
+    environment:
+      SA_PASSWORD: "someThingComplicated1234"
+      ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+      - "1433:1433"
