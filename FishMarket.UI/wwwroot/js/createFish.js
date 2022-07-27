@@ -1,6 +1,6 @@
 ﻿function resetForm() {
     $("#name").val("");
-    $("#price").val("");
+    $("#Price").val("");
     $("#formImageFile").val(null);
 }
 document.getElementById("formImageFile").onchange = function () {

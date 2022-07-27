@@ -3,7 +3,7 @@
 }
 @model FishMarket.Application.Fishes.UpdateFish.UpdateFishCommand
 
-<h2>Create a Fish</h2>
+<h2>Update a Fish</h2>
 
 <p class="text-danger">@Html.ValidationSummary()</p>
 <form enctype="multipart/form-data" method="post">
@@ -33,3 +33,7 @@
         </div>
     </div>
 </form>
+
+@section Scripts{
+    <script src="~/js/createFish.js"></script>
+}
