@@ -34,15 +34,14 @@ public class FishTests:TestBase
     [Test]
     public void UpdateFish_IsSuccessful()
     {
-        var fish = MockFish();
-        fish.Update("Hamsi", 38);
-
-
         var mockFishImage = new MockImage();
-
         var fishImageUtility = Substitute.For<IFishImageUtility>();
-        var originalFish = Fish.Create("Lüfer", 25, mockFishImage.ImageBytes, fishImageUtility);
-        Assert.That(originalFish, Is.EqualTo(fish));
+        var originalFish = Fish.Create("Hamsi", 38, mockFishImage.ImageBytes, fishImageUtility);
+
+        var updatedFish = MockFish();
+        updatedFish.Update("Hamsi", 38);
+
+        Assert.That(originalFish, Is.EqualTo(updatedFish));
     }
 
     [Test]
